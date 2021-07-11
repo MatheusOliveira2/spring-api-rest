@@ -3,12 +3,14 @@ package one.dio.restapi.service;
 import one.dio.restapi.dto.MessageResponseDTO;
 import one.dio.restapi.dto.request.PersonDTO;
 import one.dio.restapi.entity.Person;
+import one.dio.restapi.exception.PersonNotFoundException;
 import one.dio.restapi.mapper.PersonMapper;
 import one.dio.restapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,5 +35,10 @@ public class PersonService {
     public List<PersonDTO> listAll() {
         List<Person> allPeople = personRepository.findAll();
         return allPeople.stream().map(personMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        return personMapper.toDTO(person);
     }
 }
