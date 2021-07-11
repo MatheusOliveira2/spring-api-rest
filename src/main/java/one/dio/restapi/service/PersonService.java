@@ -32,6 +32,6 @@ public class PersonService {
 
     public List<PersonDTO> listAll() {
         List<Person> allPeople = personRepository.findAll();
-        return allPeople.stream().map(personMapper::toDTO).collect(Collectors.toList());;
+        return allPeople.stream().map(personMapper::toDTO).collect(Collectors.toList());
     }
 }
