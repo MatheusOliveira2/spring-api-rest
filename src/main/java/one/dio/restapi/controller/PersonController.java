@@ -6,7 +6,6 @@ import one.dio.restapi.entity.Person;
 import one.dio.restapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,7 +25,6 @@ public class PersonController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){
-        Person savedPerson = personService.createPerson(personDTO);
-        return MessageResponseDTO.builder().message("Created person with ID " + savedPerson.getId()).build();
+        return personService.createPerson(personDTO);
     }
 }
