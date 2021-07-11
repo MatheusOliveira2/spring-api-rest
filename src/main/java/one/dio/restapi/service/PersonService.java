@@ -38,12 +38,28 @@ public class PersonService {
     }
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
-        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        Person person = this.verifyIfExists(id);
         return personMapper.toDTO(person);
     }
 
     public void delete(Long id) throws PersonNotFoundException {
-        personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        this.verifyIfExists(id);
         personRepository.deleteById(id);
     }
+
+    public PersonDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
+        this.verifyIfExists(id);
+
+        Person personToUpdate = this.personMapper.toModel(personDTO);
+        Person updatedPerson = personRepository.save(personToUpdate);
+        return this.personMapper.toDTO(updatedPerson);
+
+    }
+
+    private Person verifyIfExists(Long id) throws PersonNotFoundException{
+        return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+
+    }
+
+
 }
