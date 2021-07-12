@@ -1,4 +1,4 @@
-package one.dio.restapi.dto.response;
+package one.dio.restapi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

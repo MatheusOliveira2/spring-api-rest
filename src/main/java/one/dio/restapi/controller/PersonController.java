@@ -1,8 +1,7 @@
 package one.dio.restapi.controller;
 
-import one.dio.restapi.dto.MessageResponseDTO;
+import one.dio.restapi.dto.response.MessageResponseDTO;
 import one.dio.restapi.dto.request.PersonDTO;
-import one.dio.restapi.entity.Person;
 import one.dio.restapi.exception.PersonNotFoundException;
 import one.dio.restapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;

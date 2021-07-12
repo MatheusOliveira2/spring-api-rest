@@ -1,6 +1,6 @@
 package one.dio.restapi.service;
 
-import one.dio.restapi.dto.MessageResponseDTO;
+import one.dio.restapi.dto.response.MessageResponseDTO;
 import one.dio.restapi.dto.request.PersonDTO;
 import one.dio.restapi.entity.Person;
 import one.dio.restapi.exception.PersonNotFoundException;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
